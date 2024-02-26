@@ -1,7 +1,7 @@
-[![pipeline status](https://gitlab.com/eguiraud/highlight-pulldown/badges/main/pipeline.svg)](https://gitlab.com/eguiraud/highlight-pulldown/-/commits/main)
-[![crates.io](https://img.shields.io/crates/v/highlight-pulldown.svg)](https://crates.io/crates/highlight-pulldown)
-
 # Highlight Pulldown Code
+
+Forked from https://gitlab.com/eguiraud/highlight-pulldown with the following changes:
+- Updated to use the latest versions of pulldown-cmark
 
 A small library crate to apply syntax highlighting to markdown parsed with [pulldown-cmark](https://crates.io/crates/pulldown-cmark).
 

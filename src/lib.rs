@@ -107,7 +107,8 @@ impl PulldownHighlighter {
     {
         let mut in_code_block = false;
 
-        let mut syntax = self.syntaxset.find_syntax_plain_text();
+        let default_syntax = self.syntaxset.find_syntax_plain_text();
+        let mut syntax = default_syntax;
 
         let theme = self
             .themeset
@@ -123,7 +124,10 @@ impl PulldownHighlighter {
                 Event::Start(Tag::CodeBlock(kind)) => {
                     match kind {
                         CodeBlockKind::Fenced(lang) => {
-                            syntax = self.syntaxset.find_syntax_by_token(&lang).unwrap_or(syntax)
+                            syntax = self
+                                .syntaxset
+                                .find_syntax_by_token(dbg!(&lang))
+                                .unwrap_or(default_syntax);
                         }
                         CodeBlockKind::Indented => {}
                     }

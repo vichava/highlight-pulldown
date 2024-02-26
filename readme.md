@@ -3,6 +3,9 @@
 Forked from https://gitlab.com/eguiraud/highlight-pulldown with the following changes:
 - Updated to use the latest versions of pulldown-cmark
 
+There is a plan to fix the following issues:
+- [ ] Fix the issue with the codeblock not being highlighted properly
+
 A small library crate to apply syntax highlighting to markdown parsed with [pulldown-cmark](https://crates.io/crates/pulldown-cmark).
 
 The implementation is based on the discussion at [pulldown-cmark#167](https://github.com/raphlinus/pulldown-cmark/issues/167).

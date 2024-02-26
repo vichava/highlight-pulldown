@@ -76,6 +76,16 @@ pub struct PulldownHighlighter {
     theme: String,
 }
 
+/// This is a workaround for https://github.com/trishume/syntect/issues/447
+fn map_language(lang: String) -> String {
+    // TypeScript is not yet supported by syntect, so we use JavaScript instead
+    if &lang == "typescript" {
+        "javascript".to_owned()
+    } else {
+        lang
+    }
+}
+
 /// A highlighter that can be instantiated once and used many times for better performance.
 impl PulldownHighlighter {
     pub fn new(theme: &str) -> Result<PulldownHighlighter, Error> {
@@ -126,7 +136,7 @@ impl PulldownHighlighter {
                         CodeBlockKind::Fenced(lang) => {
                             syntax = self
                                 .syntaxset
-                                .find_syntax_by_token(dbg!(&lang))
+                                .find_syntax_by_token(&map_language(lang.to_string()))
                                 .unwrap_or(default_syntax);
                         }
                         CodeBlockKind::Indented => {}

@@ -56,7 +56,7 @@
 //!
 //! Contributions in the form of issues or patches via the GitLab repo are even more appreciated.
 
-use pulldown_cmark::{CodeBlockKind, CowStr, Event, Tag};
+use pulldown_cmark::{CodeBlockKind, CowStr, Event, Tag, TagEnd};
 use syntect::highlighting::ThemeSet;
 use syntect::html::highlighted_html_for_string;
 use syntect::parsing::SyntaxSet;
@@ -129,7 +129,7 @@ impl PulldownHighlighter {
                     }
                     in_code_block = true;
                 }
-                Event::End(Tag::CodeBlock(_)) => {
+                Event::End(TagEnd::CodeBlock) => {
                     if !in_code_block {
                         panic!("this should never happen");
                     }

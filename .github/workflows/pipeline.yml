@@ -1,0 +1,8 @@
+name: pipeline
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  publish:
+    uses: vichava/workflows/.github/workflows/rust-publish.yml@master
+    secrets: inherit
